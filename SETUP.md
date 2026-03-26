@@ -96,7 +96,7 @@ Port 3000 is never exposed directly. All external traffic goes through the rever
 Create the following folder structure on your NAS. The recommended path is:
 
 ```
-/volume1/web/draft-board/
+/volume1/web/draftkit/
 ├── server.js
 ├── package.json
 ├── changelog.json
@@ -107,7 +107,7 @@ Create the following folder structure on your NAS. The recommended path is:
 
 The easiest way to transfer files is via SMB from Mac Finder:
 - In Finder, press `⌘K` and connect to `smb://[your-nas-ip]`
-- Navigate to `/volume1/web/` and create the `draft-board` folder
+- Navigate to `/volume1/web/` and create the `draftkit` folder
 - Copy all files into place
 
 ### Step 2 — Install dependencies
@@ -115,7 +115,7 @@ The easiest way to transfer files is via SMB from Mac Finder:
 Open DSM and launch a terminal session, or SSH into the NAS:
 
 ```bash
-cd /volume1/web/draft-board
+cd /volume1/web/draftkit
 npm install
 ```
 
@@ -149,7 +149,7 @@ In DSM, go to **Control Panel → Task Scheduler** and create a new triggered ta
 | Task type | Triggered task — User-defined script |
 | User | root |
 | Event | Boot-up |
-| Script | `node /volume1/web/draft-board/server.js` |
+| Script | `node /volume1/web/draftkit/server.js` |
 
 Save the task. The server will now start automatically whenever the NAS boots.
 
@@ -232,7 +232,7 @@ Pick a board ID that identifies the season clearly, for example `pgs-2027`. The 
 
 On the NAS, via Finder over SMB:
 
-1. Navigate to `/volume1/web/draft-board/public/`
+1. Navigate to `/volume1/web/draftkit/public/`
 2. Create a new folder with your chosen board ID (e.g. `pgs-2027`)
 3. Copy `index.html` from any existing board folder into the new folder
 
@@ -288,7 +288,7 @@ Port 443 is not forwarded correctly. Verify the forwarding rule on each router i
 Confirm the Task Scheduler task is set to run as `root` and the script path is correct. Check the task's output log in Task Scheduler for error details.
 
 **`node_modules` not found error on startup**
-Run `npm install` in the draft-board directory on the NAS. This is required after the initial file copy and after any `package.json` changes.
+Run `npm install` in the draftkit directory on the NAS. This is required after the initial file copy and after any `package.json` changes.
 
 ---
 
