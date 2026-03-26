@@ -2,7 +2,7 @@
 
 A real-time, sport-agnostic draft board for recreational youth leagues. Built for draft night — runs on a local network, syncs instantly across all connected devices, and persists state across restarts with no database required.
 
-<!-- screenshot -->
+![DraftKit screenshot](assets/screenshot-draft-board.png)
 
 ---
 
