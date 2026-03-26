@@ -1080,8 +1080,8 @@
     },
     {
       "feature": "GitHub Publishing + Documentation \u2014 README, SETUP, and season management guide",
-      "status": "planned",
-      "detail": "Publish source to GitHub with README.md (project overview), SETUP.md (NAS deployment and new board creation), and a season management guide"
+      "status": "complete",
+      "detail": "Published to GitHub at github.com/rebrook/draftkit with README.md (project overview, features, tech stack), SETUP.md (local and Synology NAS deployment, season management lifecycle), and .gitignore"
     },
     {
       "feature": "CSV Template Download \u2014 generates a pre-formatted import CSV with configured station names",

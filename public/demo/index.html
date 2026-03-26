@@ -5183,7 +5183,7 @@ function DraftBoard({ darkMode, setDarkMode }) {
       <PlayerModal playerName={modalPlayer} drafted={drafted} onClose={function() { setModalPlayer(null); }} myTeam={myTeam} playerNotesStore={playerNotesStore} onPlayerNoteChange={handlePlayerNoteChange} teams={cfgTeams} leagueLabel={cfgLeague.sportEmoji + " " + cfgLeague.seasonName + " " + cfgLeague.season} stations={cfgStations} priorityIdx={cfgPriorityIdx} positions={cfgPositions} players={activePlayers} boardArchived={boardArchived} onCoachToggle={handleCoachToggle} projectedRounds={projectedRounds} preAssigned={modalPlayer ? (activePreAssigned[modalPlayer] || null) : null} />
 
       <div style={{ textAlign: "center", padding: "16px 28px", borderTop: "1px solid var(--color-border-tertiary)", fontSize: 11, color: "var(--color-text-tertiary)" }}>
-        Designed &amp; Built by Ryan Brook (<a href="mailto:ryan@brook-creative.com" style={{ color: "var(--color-text-tertiary)" }}>ryan@brook-creative.com</a>) &middot; Powered by Claude &middot; Demo Board &middot; <a href="/logs" target="_blank" style={{ color: "var(--color-text-tertiary)" }}>Server Logs</a>
+        Designed &amp; Built by Ryan Brook (<a href="mailto:ryan@brook-creative.com" style={{ color: "var(--color-text-tertiary)" }}>ryan@brook-creative.com</a>) &middot; Powered by Claude &middot; Demo Board &middot; <a href="https://github.com/rebrook/draftkit" target="_blank" style={{ color: "var(--color-text-tertiary)" }}>GitHub</a> &middot; <a href="/logs" target="_blank" style={{ color: "var(--color-text-tertiary)" }}>Server Logs</a>
       </div>
       {showTutorial && <TutorialModal onClose={function() { setShowTutorial(false); }} />}
       {showCommissionerLogin && (
