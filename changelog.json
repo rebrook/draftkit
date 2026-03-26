@@ -1,9 +1,16 @@
 {
-  "current": "V1.17.4",
+  "current": "V1.17.5",
   "whatsNew": [
-    "Polish \u2014 roadmap entries in What's New tab now show a concise feature title with detailed description below; all 26 roadmap entries updated with detail text"
+    "Fix \u2014 footer now shows Board ID: {boardId} dynamically instead of hardcoded \u201cDemo Board\u201d"
   ],
   "changelog": [
+    {
+      "version": "V1.17.5",
+      "date": "Mar 26, 2026",
+      "changes": [
+        "Fix \u2014 footer now shows Board ID: {boardId} dynamically instead of hardcoded \u201cDemo Board\u201d"
+      ]
+    },
     {
       "version": "V1.17.4",
       "date": "Mar 25, 2026",
