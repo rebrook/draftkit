@@ -91,7 +91,7 @@ The entire frontend is a single self-contained HTML file compiled client-side by
 ## Repository Structure
 
 ```
-draft-board/
+draftkit/
 ├── server.js              # Express + WebSocket server
 ├── package.json           # Node dependencies
 ├── changelog.json         # Version history (read by the app at runtime)
