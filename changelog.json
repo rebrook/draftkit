@@ -1,0 +1,1206 @@
+{
+  "current": "V1.17.4",
+  "whatsNew": [
+    "Polish \u2014 roadmap entries in What's New tab now show a concise feature title with detailed description below; all 26 roadmap entries updated with detail text"
+  ],
+  "changelog": [
+    {
+      "version": "V1.17.4",
+      "date": "Mar 25, 2026",
+      "changes": [
+        "Polish \u2014 roadmap entries in What's New tab now show a concise feature title with detailed description below; all 26 roadmap entries updated with detail text"
+      ]
+    },
+    {
+      "version": "V1.17.3",
+      "date": "Mar 25, 2026",
+      "changes": [
+        "Feature \u2014 Export overlay now has a team filter dropdown (All Teams or specific team); selecting a team filters the visual to show only that team card and changes the download button to Download Roster; roster export generates a per-team .xlsx with player name, age, eval scores, overall, tier, positions, and draft round sorted by round; closing the overlay resets the filter to All Teams",
+        "Fix \u2014 export overlay subtitle now shows division and player count for All Teams, or coach names and player count for a specific team; removed hardcoded 11-13 Division reference"
+      ]
+    },
+    {
+      "version": "V1.17.2",
+      "date": "Mar 25, 2026",
+      "changes": [
+        "Bug fix \u2014 React.Fragment key in player table was still using idx (old array index variable) instead of p.id; caused ReferenceError crash when opening Players section in Commissioner Mode"
+      ]
+    },
+    {
+      "version": "V1.17.1",
+      "date": "Mar 25, 2026",
+      "changes": [
+        "Feature \u2014 Player table column sorting in Commissioner Mode: all 10 columns are sortable (Name, Age, S1\u2013S5, Pre-Assigned, Round, Pending); click any header to sort, click again to reverse; active column highlighted in blue with \u25b2/\u25bc indicator; unsorted columns show \u21c5",
+        "Refactor \u2014 updatePlayer and removePlayer now use stable player id instead of array index; addPlayer and CSV import assign ids; existing players without ids get assigned on load; enables safe sorting without mutation bugs"
+      ]
+    },
+    {
+      "version": "V1.17.0",
+      "date": "Mar 25, 2026",
+      "changes": [
+        "Feature \u2014 Password recovery: \"Forgot password?\" link added to Commissioner login modal; requires typing RESET PASSWORD to confirm; resets password to default (commissioner) via new server endpoint POST /api/commissioner/reset-password; success screen prompts commissioner to log in with the default password"
+      ]
+    },
+    {
+      "version": "V1.16.4",
+      "date": "Mar 25, 2026",
+      "changes": [
+        "Feature \u2014 Pre-assigned player visual treatment: cards now show a blue tint background and \u2b50 Pre-Assigned badge driven by commissioner config; draft button replaced with locked label showing assigned team; border highlights in blue when selected",
+        "Cleanup \u2014 COACH_DAUGHTERS hardcoded constant fully removed; activePreAssigned from commissioner config is now the sole source of truth for pre-assignment across PlayerCard, PlayerModal, pick log, team view, pick order, and NBA logic",
+        "Cleanup \u2014 INITIAL_DRAFTED simplified to empty object; commissioner pre-assigned players sync into drafted state via existing useEffect on config load",
+        "Guide / Tour / Legend \u2014 pre-assigned section updated to describe blue tint background and commissioner-based assignment; legend updated to mention blue badge + tint"
+      ]
+    },
+    {
+      "version": "V1.16.3",
+      "date": "Mar 25, 2026",
+      "changes": [
+        "Bug fix \u2014 CSV import example display was missing the Round column in the header row; updated to match the Download Template output"
+      ]
+    },
+    {
+      "version": "V1.16.2",
+      "date": "Mar 25, 2026",
+      "changes": [
+        "Bug fix \u2014 toolbar container div (background-primary header bar) was missing its closing </div>; caused Babel JSX parser to remain inside the toolbar JSX context for the rest of the DraftBoard return, producing \"Unexpected token\" error at DarkModeWrapper"
+      ]
+    },
+    {
+      "version": "V1.16.1",
+      "date": "Mar 25, 2026",
+      "changes": [
+        "Bug fix \u2014 V1.16.0 introduced an unbalanced JSX div wrapping the first-run nudge banner and filter bar; outer wrapper div was not closed inside the conditional, causing a Babel syntax error on load"
+      ]
+    },
+    {
+      "version": "V1.16.0",
+      "date": "Mar 25, 2026",
+      "changes": [
+        "Feature \u2014 CSV Template Download: new \u2b07 Download Template button in Commissioner Mode Players section generates a pre-formatted CSV with configured station names as column headers and one example row; station names update dynamically if eval stations are changed",
+        "Feature \u2014 My Team first-run nudge: yellow banner shown on the draft board when no team has been explicitly selected; prompts coaches to click their team abbreviation in the toolbar; dismissed automatically when a team is selected or via the Dismiss button; only shown when players exist",
+        "Feature \u2014 My Team buttons no longer appear highlighted until a team is explicitly selected; prevents confusion about which team is active before selection",
+        "Guide \u2014 Commissioner Players section added covering CSV import, template download, pending eval, and prior scores behavior",
+        "Tour \u2014 Commissioner Mode step updated to mention CSV template download"
+      ]
+    },
+    {
+      "version": "V1.15.21",
+      "date": "Mar 25, 2026",
+      "changes": [
+        "Feature \u2014 Division field added to Commissioner Mode League Setup; stored in commissionerConfig as division; shown in board header subtitle between league name and player count (e.g. Spring 2026 \u00b7 Pikesville Girls Softball \u00b7 11-13 Division \u00b7 45 Players); hidden when blank"
+      ]
+    },
+    {
+      "version": "V1.15.20",
+      "date": "Mar 25, 2026",
+      "changes": [
+        "Feature \u2014 players with no current year scores but valid prior season scores now automatically use prior scores for overall, tier, PR, and team averages; pendingEval remains false; player card shows amber \"Prior season scores\" note so coaches know the data source",
+        "Visual fix \u2014 tier filter buttons now use var(--color-text-primary) for inactive state text color; was hardcoded #374151 which was unreadable in dark mode"
+      ]
+    },
+    {
+      "version": "V1.15.19",
+      "date": "Mar 25, 2026",
+      "changes": [
+        "Visual fix \u2014 dark mode header gradient now uses hexToDarkHeader() at 35% lightness and 55% saturation instead of hexToDarkSurface() at 15% lightness; commissioner-chosen header colors are now clearly visible in dark mode rather than appearing nearly black; color identity is preserved per WCAG AA standards for white text on colored backgrounds"
+      ]
+    },
+    {
+      "version": "V1.15.18",
+      "date": "Mar 25, 2026",
+      "changes": [
+        "Visual fix \u2014 pending eval tier group header was hardcoded as \"Pending 2026 Evals\"; now displays as \"Pending Evals\" with no hardcoded year"
+      ]
+    },
+    {
+      "version": "V1.15.17",
+      "date": "Mar 25, 2026",
+      "changes": [
+        "Visual fix \u2014 pre-assigned players with no round set now show \"Pre \u00b7 \u2014\" in the pick log instead of \"Pre \u00b7 Rnull\"; affects both the compact header pick log and the full pick log overlay"
+      ]
+    },
+    {
+      "version": "V1.15.16",
+      "date": "Mar 25, 2026",
+      "changes": [
+        "Feature \u2014 Pending Eval checkbox added to Commissioner Mode player table; when checked, player is flagged as pendingEval, score inputs are grayed out and disabled, overall/tier are set to null, player receives yellow pending treatment on board cards and is excluded from team averages and PR calculation",
+        "Bug fix \u2014 new player score fields now default to empty string instead of 0; inputs show placeholder dash instead of zero until scores are entered",
+        "Bug fix \u2014 cfgPlayers useMemo now reads pendingEval from commissioner player data instead of always setting false; CSV import also defaults pendingEval to false for imported players"
+      ]
+    },
+    {
+      "version": "V1.15.15",
+      "date": "Mar 25, 2026",
+      "changes": [
+        "Bug fix \u2014 PR (Projected Round) badge now computed dynamically from activePlayers instead of the hardcoded RAW_PLAYERS constant; commissioner-added players and pre-assigned players now receive a PR badge",
+        "Bug fix \u2014 projectedRounds is now a useMemo inside DraftBoard using activePlayers and cfgTeamKeys; updates automatically whenever players are added or team count changes",
+        "Cleanup \u2014 removed hardcoded PROJECTED_ROUNDS constant that was based on Springfield demo data"
+      ]
+    },
+    {
+      "version": "V1.15.14",
+      "date": "Mar 25, 2026",
+      "changes": [
+        "Bug fix \u2014 pre-assigned player team and round assignments in Commissioner Mode now immediately update the board without requiring a page refresh; a useEffect syncs activePreAssigned into drafted whenever commissioner config changes; commissioner assignments always overwrite existing drafted entries for pre-assigned players",
+        "Visual fix \u2014 pre-assigned round dropdown width increased from 60px to 80px; double-digit rounds (e.g. Rd 12) now display fully instead of being truncated"
+      ]
+    },
+    {
+      "version": "V1.15.13",
+      "date": "Mar 25, 2026",
+      "changes": [
+        "Feature \u2014 Number of Rounds field added to Commissioner Mode League Setup (default 12); stored in commissionerConfig as numRounds",
+        "Bug fix \u2014 pre-assigned round dropdown now always shows all configured rounds instead of computing from current player count; was showing only Round 1 when few players had been entered",
+        "Consistency \u2014 cfgNumRounds is now the single source of truth for round count across all board features: handleAutoDraft, onTheClock, Pick Order tab render, Pick Order round filter dropdown, Excel export, and Commissioner player summary row all use cfgNumRounds",
+        "Consistency \u2014 Commissioner player summary row now shows the configured round count instead of a dynamic calculation"
+      ]
+    },
+    {
+      "version": "V1.15.12",
+      "date": "Mar 25, 2026",
+      "changes": [
+        "Bug fix \u2014 schedule bar now displays items in chronological order regardless of the order they were entered in Commissioner Mode; YYYY-MM-DD dates sort correctly as strings; free-text dates with M/D patterns (e.g. Tue 3/17) are parsed for sorting; unparseable entries sort to the end; commissioner entry order is preserved in state"
+      ]
+    },
+    {
+      "version": "V1.15.11",
+      "date": "Mar 25, 2026",
+      "changes": [
+        "Bug fix \u2014 board was falling back to RAW_PLAYERS (Springfield demo data) when no commissioner config existed or after a factory reset; activePlayers now uses an empty array instead of RAW_PLAYERS \u2014 commissioner player data is the sole source of truth for the live board; RAW_PLAYERS remains in the codebase for tour animations and guide examples only"
+      ]
+    },
+    {
+      "version": "V1.15.10",
+      "date": "Mar 25, 2026",
+      "changes": [
+        "Bug fix \u2014 New Season / Factory Reset: client was not clearing commissioner config after reset; FULL_STATE handler only called onCommissionerConfigReceived when config was truthy, silently skipping the null value sent after a factory reset; fixed to always call onCommissionerConfigReceived on FULL_STATE regardless of config value"
+      ]
+    },
+    {
+      "version": "V1.15.9",
+      "date": "Mar 25, 2026",
+      "changes": [
+        "Schedule cleanup \u2014 DRAFT_INFO schedule fields removed; schedule is now entirely commissioner-driven with no hardcoded defaults or demo data",
+        "Schedule cleanup \u2014 DEFAULT_CONFIG.schedule changed to empty array; commissioners add all rows themselves",
+        "Schedule cleanup \u2014 cfgSchedule fallback returns empty array instead of DRAFT_INFO rows; schedule strip hidden when no rows configured",
+        "Schedule cleanup \u2014 Email Generator fields that were pre-filled from DRAFT_INFO (firstPracticeDate, openingDay) now start empty",
+        "Date format \u2014 formatScheduleDate() helper added; dates entered via the commissioner date picker (YYYY-MM-DD) now display as e.g. Wed 3/18/2026; pre-formatted strings like \"Tue 3/17 @ 8:00 PM\" are passed through unchanged"
+      ]
+    },
+    {
+      "version": "V1.15.8",
+      "date": "Mar 25, 2026",
+      "changes": [
+        "Bug fix \u2014 Analytics Tab: all four charts now update data in place using chart.update(\"none\") instead of destroying and recreating on every state change; eliminates chart flicker and legend toggle reset caused by periodic WebSocket reconnects",
+        "Bug fix \u2014 Draft Score Timeline Y axis was locked to 0-5 (matching eval station scale) while cumulative avg scores are 14-22; axis now auto-scales to data range",
+        "Analytics Tab dark mode: charts track _isDark flag and only fully recreate when theme changes; all other data updates are non-destructive"
+      ]
+    },
+    {
+      "version": "V1.15.7",
+      "date": "Mar 25, 2026",
+      "changes": [
+        "Bug fix \u2014 Analytics Tab Draft Score Timeline: Chart.js was mutating data arrays from a previous chart instance via _chartjs listeners; fixed by passing data.slice() and labels.slice() to ensure fresh array copies, removing the setTimeout that was causing stale chart instance interference, and restoring synchronous destroy/recreate pattern used by the other three charts"
+      ]
+    },
+    {
+      "version": "V1.15.6",
+      "date": "Mar 25, 2026",
+      "changes": [
+        "Bug fix \u2014 Analytics Tab Draft Score Timeline still blank: chart creation deferred via setTimeout(50ms) to ensure canvas is fully painted before Chart.js measures it; cleanup function updated to clear timer and destroy chart instance"
+      ]
+    },
+    {
+      "version": "V1.15.5",
+      "date": "Mar 25, 2026",
+      "changes": [
+        "Bug fix \u2014 Analytics Tab Draft Score Timeline was blank: rebuilt using teamRosters (which already contains player objects with draftRound and overall) instead of draftHistory + name lookup; eliminates string/int round mismatch and correctly includes pre-assigned players in cumulative averages"
+      ]
+    },
+    {
+      "version": "V1.15.4",
+      "date": "Mar 25, 2026",
+      "changes": [
+        "Analytics Tab \u2014 new tab added between Pick Order and Notes; visible to all coaches",
+        "Analytics Tab \u2014 Chart 1: Team Radar \u2014 overlapping polygon chart showing each team's average score across all eval stations; uses configured station names; color-matched to team colors",
+        "Analytics Tab \u2014 Chart 2: Tier Distribution \u2014 grouped bar chart showing player count per tier per team; only tiers with drafted players shown",
+        "Analytics Tab \u2014 Chart 3: Draft Score Timeline \u2014 line chart showing each team's cumulative average overall score after each round; reveals how team quality evolved through the draft",
+        "Analytics Tab \u2014 Chart 4: Station Averages \u2014 horizontal grouped bar chart showing each team's average per eval station side by side; most precise view for spotting gaps between teams",
+        "Analytics Tab \u2014 all four charts are dark mode aware, update in real time as picks are made, and show an empty state message before any picks are entered",
+        "Analytics Tab \u2014 Chart.js 4.4.1 added via CDN; chart instances managed via useRef with proper destroy/recreate on re-render",
+        "Guide \u2014 Analytics Tab section added",
+        "Tour \u2014 Analytics tab step added after Pick Order step",
+        "Roadmap \u2014 Analytics Tab marked complete"
+      ]
+    },
+    {
+      "version": "V1.15.3",
+      "date": "Mar 25, 2026",
+      "changes": [
+        "Bug fix #10 \u2014 commissioner header gradient now dark-mode aware: hexToDarkSurface() applied to header color when dark mode is active; affects main board header and Draft Recap overlay",
+        "Cleanup #8 \u2014 Board Tagline field removed from Commissioner Mode; field was saved to config but never rendered on the live board; DEFAULT_CONFIG, state, buildConfig, and header preview all updated"
+      ]
+    },
+    {
+      "version": "V1.15.2",
+      "date": "Mar 24, 2026",
+      "changes": [
+        "Dark Mode Phase 7 \u2014 remaining hardcoded tint backgrounds replaced: #f0f9ff (info), #fee2e2 (danger), #dbeafe/#fce7f3 (versioning badges) all now use semantic CSS variables",
+        "Dark Mode Phase 7 \u2014 hardcoded text colors on surface tints replaced: #92400e (amber), #991b1b (red), #0369a1 (info), #15803d/#166534 (green) all now use var(--color-text-primary) for dark mode readability",
+        "Dark Mode Phase 7 \u2014 cancel button backgrounds updated from #f9fafb to var(--color-background-secondary)",
+        "Dark Mode Phase 7 \u2014 remove/delete button borders (#fca5a5) replaced with var(--color-border-secondary); danger surface button text updated to CSS variable",
+        "Dark Mode Phase 7 \u2014 yellow warning borders (#fde68a) replaced with var(--color-border-secondary) throughout"
+      ]
+    },
+    {
+      "version": "V1.15.1",
+      "date": "Mar 24, 2026",
+      "changes": [
+        "Bug fix: tab bar scroll fade overlay was hardcoded to #fff \u2014 now uses var(--color-background-primary); light gradient artifact in dark mode resolved",
+        "Known issue #10: commissioner-chosen header colors are not adjusted for dark mode \u2014 a light header color chosen in Commissioner Mode will remain light in dark mode; proposed fix is to auto-darken the header gradient using hexToDarkSurface() when dark mode is active"
+      ]
+    },
+    {
+      "version": "V1.15.0",
+      "date": "Mar 24, 2026",
+      "changes": [
+        "Dark Mode Phase 6 \u2014 tab bar inactive buttons (btnStyle) now use CSS variables; light rectangle artifact in toolbar resolved",
+        "Dark Mode Phase 6 \u2014 round selector and position tag buttons in PlayerCard now use CSS variables for inactive state",
+        "Dark Mode Phase 6 \u2014 Copy Text and Copy HTML buttons now have explicit color property; text readable in dark mode",
+        "Dark Mode Phase 6 \u2014 CommissionerPanel inputStyle and Players tab editStyle now include color: var(--color-text-primary); all editable fields readable in dark mode",
+        "Dark Mode Phase 6 \u2014 team move up/down buttons in Commissioner Panel now include color property",
+        "Dark Mode Phase 6 \u2014 Guide tab tour banner updated to use CSS variables for background and text colors",
+        "Dark Mode Phase 6 \u2014 Notes tab editor background now uses CSS variables (was hardcoded #fff)",
+        "Dark Mode Phase 6 \u2014 email highlight spans now include color:#000 to ensure black text on yellow background regardless of theme"
+      ]
+    },
+    {
+      "version": "V1.14.9",
+      "date": "Mar 24, 2026",
+      "changes": [
+        "Dark Mode Phase 5 \u2014 scrollbar thumb now dark-aware (#4b5563) via [data-theme=dark] CSS override",
+        "Dark Mode Phase 5 \u2014 Guide tab textColor and titleColor fields replaced with CSS variables; guide section text now readable in dark mode",
+        "Dark Mode Phase 5 \u2014 Players tab prior scores row background and border colors updated to CSS variables",
+        "Dark Mode Phase 5 \u2014 Guide hasBorder check updated to work with CSS variable bg values",
+        "Dark Mode Phase 5 \u2014 tour ANIMS cssText strings updated: score bar tracks, card borders, button backgrounds, notes borders all now use CSS variables"
+      ]
+    },
+    {
+      "version": "V1.14.8",
+      "date": "Mar 24, 2026",
+      "changes": [
+        "Dark Mode Phase 4 \u2014 replaced 94 hardcoded border colors (#e5e7eb, #d1d5db, #f3f4f6) with CSS variables across all inline styles, ternaries, and state-conditional expressions; includes divider lines, score bar tracks, toggle tracks, disabled button borders, and tier/team filter buttons"
+      ]
+    },
+    {
+      "version": "V1.14.7",
+      "date": "Mar 24, 2026",
+      "changes": [
+        "Bug fix: ThemeContext.Provider moved above DraftBoard via new DarkModeWrapper component \u2014 previously the Provider was inside DraftBoard's return, meaning DraftBoard itself could not consume it; team dark tint colors now correctly applied in Pick Order and PlayerCard",
+        "Architecture: DarkModeWrapper now owns darkMode state and data-theme effect; DraftBoard receives darkMode/setDarkMode as props; all child components consume ThemeContext correctly via useIsDark()"
+      ]
+    },
+    {
+      "version": "V1.14.6",
+      "date": "Mar 24, 2026",
+      "changes": [
+        "Bug fix: Pick Order tab was not using dark team tint colors \u2014 root cause was useIsDark() called inside an IIFE in JSX, violating React Rules of Hooks; moved isDark to DraftBoard top level and removed the invalid hook call",
+        "Checklist updated: hook placement check added \u2014 all hook calls must be at the top level of a function component"
+      ]
+    },
+    {
+      "version": "V1.14.5",
+      "date": "Mar 24, 2026",
+      "changes": [
+        "Dark Mode Phase 3 \u2014 React Context (ThemeContext) added for app-wide theme awareness; useIsDark() hook available to all components",
+        "Dark Mode Phase 3 \u2014 hexToDarkSurface() helper computes HSL-based dark surface tints from team primary colors \u2014 industry standard approach preserving hue identity",
+        "Dark Mode Phase 3 \u2014 7 semantic CSS surface variables added (--color-surface-success/warning/danger/info/purple/amber) with light and dark values; system preference media query also updated",
+        "Dark Mode Phase 3 \u2014 all hardcoded accent tint backgrounds replaced with CSS variables throughout: eval score cells, card headers, pending/Most Improved states, Coach/NBA banners, Guide sections",
+        "Dark Mode Phase 3 \u2014 team card backgrounds (PlayerCard, Pick Order) now use darkLight (HSL-computed) in dark mode and existing light color in light mode",
+        "Known issue: tour animation ANIMS still use some hardcoded light tint backgrounds \u2014 deferred to Phase 5 polish"
+      ]
+    },
+    {
+      "version": "V1.14.4",
+      "date": "Mar 24, 2026",
+      "changes": [
+        "Dark Mode fixes \u2014 scouting card header ternary backgrounds, card border, YoY section border, delta color function; player card background ternary, score bar tracks, station label color ternary; team view bar tracks all now CSS variable-aware"
+      ]
+    },
+    {
+      "version": "V1.14.3",
+      "date": "Mar 24, 2026",
+      "changes": [
+        "Dark Mode fixes \u2014 resolved 10 readability issues: Recap button text, Players tab alternating row backgrounds, Archive box ternary background, Notes toolbar button text/border, Pick Order row backgrounds, Scouting eval score neutral cell backgrounds, Changelog collapsed bucket and version badge backgrounds, Tour step 8 scouting animation delta text color"
+      ]
+    },
+    {
+      "version": "V1.14.2",
+      "date": "Mar 24, 2026",
+      "changes": [
+        "Dark Mode Phase 2 \u2014 replaced 150 hardcoded text colors (#111827, #374151, #6b7280, #9ca3af) with CSS variables (--color-text-primary, --color-text-secondary, --color-text-tertiary); text is now readable in dark mode; button/badge/disabled-state colors using these values as backgrounds were intentionally preserved"
+      ]
+    },
+    {
+      "version": "V1.14.1",
+      "date": "Mar 24, 2026",
+      "changes": [
+        "Dark Mode Phase 1 \u2014 replaced 87 hardcoded background colors (#fff, #f8fafc, #f3f4f6, #fafafa) with CSS variables (--color-background-primary, --color-background-secondary); card and panel backgrounds now respond to theme switching"
+      ]
+    },
+    {
+      "version": "V1.14.0",
+      "date": "Mar 24, 2026",
+      "changes": [
+        "Dark Mode \u2014 three-way theme toggle (\u2600\ufe0f Light / \ud83c\udf19 Dark / \ud83d\udcbb System) added to toolbar; System follows OS preference and updates automatically if OS setting changes; preference saved to localStorage and persists across page refreshes",
+        "Dark theme applies to entire page including Commissioner Panel, modals, and overlays",
+        "Guide updated with dark mode documentation",
+        "Roadmap: Dark Mode marked complete"
+      ]
+    },
+    {
+      "version": "V1.13.4",
+      "date": "Mar 24, 2026",
+      "changes": [
+        "Bug fix: browser tab title was hardcoded as the demo board name; now dynamically reflects configured sport emoji and board title from Commissioner Mode league setup"
+      ]
+    },
+    {
+      "version": "V1.13.3",
+      "date": "Mar 24, 2026",
+      "changes": [
+        "Bug fix: Scouting tab crashed when navigating to it \u2014 root cause was cs variable changed from stats object to boolean in V1.13.2; removed stale batting/pitching stats block that depended on PREVIOUSLY_COACHED data which was always empty"
+      ]
+    },
+    {
+      "version": "V1.13.2",
+      "date": "Mar 24, 2026",
+      "changes": [
+        "Previously Coached Flag \u2014 each coach can now mark players they coached last season using a \ud83c\udfc5 toggle on any player card or in the player detail modal",
+        "Coached flags are private per team, persist across restarts and Reset Draft, sync in real time via WebSocket, and show as a purple \ud83c\udfc5 Prev. Coached badge on cards, in the Scouting tab, and in Pick Order",
+        "NBA tiebreaker now reads from live coached flags \u2014 previously coached players are boosted when weighted scores are within 0.01",
+        "Roadmap: Previously Coached Flag marked complete",
+        "Legend, Guide, and Tour updated with coached flag documentation"
+      ]
+    },
+    {
+      "version": "V1.13.1",
+      "date": "Mar 24, 2026",
+      "changes": [
+        "Bug fix: removing a position in Commissioner Mode now strips that position tag from all drafted players immediately",
+        "Known issue added: position labels cannot be edited inline \u2014 delete and re-add as workaround"
+      ]
+    },
+    {
+      "version": "V1.13.0",
+      "date": "Mar 24, 2026",
+      "changes": [
+        "Commissioner Mode \u2014 new Positions section: add, remove, and reorder position tags with up/down arrows; positions are saved to commissionerConfig and sync to all connected clients",
+        "Position tags on player cards now use commissioner-configured positions; falls back to default softball positions if none configured",
+        "Guide and Tour updated \u2014 position tag descriptions no longer list hardcoded softball positions; reference commissioner configurability",
+        "Resolved known issue #7: position tags are now commissioner-configurable"
+      ]
+    },
+    {
+      "version": "V1.12.0",
+      "date": "Mar 24, 2026",
+      "changes": [
+        "New Season / Factory Reset \u2014 new Board Settings action in Commissioner Mode; wipes all picks, history, notes, position tags, commissioner config, and resets the commissioner password to default; requires re-entry of commissioner password plus typing NEW SEASON to confirm; syncs instantly to all connected clients",
+        "Guide tab and Tour: Board Settings and Commissioner Mode descriptions updated to include New Season / Factory Reset",
+        "Bug fix: Guide sort description and Pick Order guide text no longer reference softball-specific terms; updated to generic language",
+        "Bug fix: tour checklist item \"Pitchers first\" updated to \"Priority station players first\"",
+        "Bug fix: hardcoded \ud83e\udd4e emoji in tour animation replaced with multi-sport icons; Export overlay header now draws from configured sport emoji and season name",
+        "Bug fix: legend, sort dropdown, player card, player modal, and tour animations no longer use hardcoded softball/pitching display labels \u2014 all updated to generic priority station language"
+      ]
+    },
+    {
+      "version": "V1.11.10",
+      "date": "Mar 24, 2026",
+      "changes": [
+        "What's New tab: changelog entries now grouped and collapsed by minor version (e.g. V1.11, V1.10); most recent group expanded by default, older groups collapsed",
+        "What's New tab: added Versioning section documenting patch/minor/major version rules and thresholds"
+      ]
+    },
+    {
+      "version": "V1.11.9",
+      "date": "Mar 24, 2026",
+      "changes": [
+        "Bug fix: scouting tour animation (Step 8) contained real player names; replaced with fictional names",
+        "Bug fix: roadmap now renders in correct order \u2014 Planned \u2192 Future \u2192 Complete",
+        "Roadmap: removed in-season pitcher usage tracker (out of scope for draft board); promoted New Season / Factory Reset and Previously Coached Flag from Future to Planned",
+        "Roadmap: added What's New tab collapsible version sections as Planned"
+      ]
+    },
+    {
+      "version": "V1.11.8",
+      "date": "Mar 24, 2026",
+      "changes": [
+        "Bug fix: PlayerModal scouting notes textarea was still editable after archiving; boardArchived prop added to PlayerModal, textarea set to readOnly and onChange gated; archived banner shown above notes section"
+      ]
+    },
+    {
+      "version": "V1.11.7",
+      "date": "Mar 24, 2026",
+      "changes": [
+        "Notes tab: contentEditable disabled and archived banner shown when board is archived; onInput gated to prevent changes",
+        "Email tab: boardArchived prop added; form fields hidden with read-only message; preview section contentEditable and onInput both disabled when archived",
+        "Commissioner Panel: Save Changes button and password field hidden when archived; header subtitle updated to indicate read-only state with link to Board Settings"
+      ]
+    },
+    {
+      "version": "V1.11.6",
+      "date": "Mar 24, 2026",
+      "changes": [
+        "Bug fix: Full Reset was not clearing team notes or player scouting notes on the client \u2014 notes callbacks were merging incoming state rather than replacing it, so empty {} from the server had no effect",
+        "Fix: notes callbacks now replace the store entirely rather than merging; useDraftSync condition updated to always fire callbacks even when incoming notes object is empty"
+      ]
+    },
+    {
+      "version": "V1.11.5",
+      "date": "Mar 24, 2026",
+      "changes": [
+        "Bug fix: handleAutoDraft was rebuilding drafted state from scratch, discarding all position tags; now preserves existing positions arrays across all players before assigning picks \u2014 consistent with handleReset behavior"
+      ]
+    },
+    {
+      "version": "V1.11.4",
+      "date": "Mar 24, 2026",
+      "changes": [
+        "Bug fix: Commissioner Reset Draft endpoint was clearing bs.state entirely, discarding position tags; now preserves any positions arrays when resetting picks and history \u2014 consistent with existing handleReset behavior on the client"
+      ]
+    },
+    {
+      "version": "V1.11.3",
+      "date": "Mar 24, 2026",
+      "changes": [
+        "Bug fix: position tags were inaccessible on pre-assigned players with a commissioner-set round \u2014 the blue 'Round X set by Commissioner' message was swallowing the entire isSelected block including position buttons; position tags now rendered independently of the round lock message"
+      ]
+    },
+    {
+      "version": "V1.11.2",
+      "date": "Mar 24, 2026",
+      "changes": [
+        "Bug fix: CommissionerPanel was referencing boardLocked as a closure variable \u2014 it is now passed as a prop from DraftBoard and correctly reflects current lock state in Board Settings"
+      ]
+    },
+    {
+      "version": "V1.11.1",
+      "date": "Mar 24, 2026",
+      "changes": [
+        "Bug fix: Draft Lock button was always locking (passed !boardArchived instead of !boardLocked to the API); now correctly toggles based on current lock state",
+        "Lock button label now shows current action \u2014 '\ud83d\udd12 Lock Board' when unlocked, '\ud83d\udd13 Unlock Board' when locked; button turns green when board is locked"
+      ]
+    },
+    {
+      "version": "V1.11.0",
+      "date": "Mar 24, 2026",
+      "changes": [
+        "Commissioner Panel \u2014 new Board Settings section with four actions: Draft Lock toggle (syncs to all clients), Reset Draft (picks + history only, type RESET to confirm), Full Reset (clears everything including notes and position tags, type FULL RESET to confirm), Archive Board (permanent read-only lock with archive unlock code, type ARCHIVE to confirm)",
+        "Unarchive Board: commissioner can unarchive using the unlock code set at archive time \u2014 requires separate unlock code from commissioner password for safety",
+        "boardArchived state added to board runtime \u2014 all toolbar controls disabled when archived; 'Season Archived \u2014 Read Only' badge shown; Lock Board button hidden",
+        "Archived state enforced server-side \u2014 UPDATE, UPDATE_NOTES, and UPDATE_PLAYER_NOTE WebSocket messages rejected when board is archived",
+        "Commissioner password now passed through to Board Settings API calls \u2014 stored as session state when commissioner authenticates",
+        "server.js: loadState/saveState updated with archived and archiveUnlockCode fields; fullStatePayload helper added; five new commissioner endpoints: /lock, /reset, /fullreset, /archive, /unarchive",
+        "Guide: new Commissioner Mode category with Board Settings section documenting all four actions",
+        "Tour: new Commissioner Mode step added"
+      ]
+    },
+    {
+      "version": "V1.10.3",
+      "date": "Mar 23, 2026",
+      "changes": [
+        "Legend: amber border description updated to reference priority station; purple badge updated to 'coached by you last season'; yellow background year removed; team view bar description updated to reflect score-based bars",
+        "Guide: Overview updated \u2014 removed Springfield team names; Eval System updated \u2014 removed hardcoded station names, describes configurable stations; NBA updated \u2014 removed softball-specific weights and Homer Simpson reference; Scouting updated \u2014 removed Homer Simpson/game stats reference; Team View updated \u2014 describes 5 horizontal score bars; Draft Recap updated \u2014 describes dynamic station names",
+        "Tour: eval, nba, teamview, scouting, and ready steps all updated to be sport-agnostic and remove hardcoded references"
+      ]
+    },
+    {
+      "version": "V1.10.1",
+      "date": "Mar 23, 2026",
+      "changes": [
+        "Team View bars: switched from rank-based width (last place = invisible) to score-based width (val/5.0 * 100%) \u2014 bar always visible for any non-zero score; rank communicated by color and label only",
+        "rankLabel() and rankColor() now dynamic based on actual team count \u2014 handles any number of teams; last place correctly labeled 'Weakest' regardless of league size",
+        "handleAutoDraft bug fix: was starting slot assignment at Round 2, skipping Round 1 entirely \u2014 now correctly starts at Round 1"
+      ]
+    },
+    {
+      "version": "V1.10.0",
+      "date": "Mar 23, 2026",
+      "changes": [
+        "Prior season scores (PS1\u2013PS5): commissioner player table gains expandable sub-row for prior scores with live YoY delta; cfgPlayers passes priorScores/priorOverall through to player objects",
+        "Scouting tab: when commissioner config active, uses player's own prior scores instead of PRIOR_SCORES constant; shows empty state with instructions when no prior data present",
+        "PlayerModal and NBA logic updated to use player priorOverall for YoY when commissioner config active",
+        "SCORES_2025 renamed to PRIOR_SCORES, COACHED_LAST_YEAR renamed to PREVIOUSLY_COACHED; both emptied \u2014 Springfield demo data removed",
+        "Station rankings generalized: teamStats now computes S1\u2013S5 averages by index; rankOf() accepts station number 1\u20135 or 'overall'; all hardcoded hitting/pitching/fielding keys removed",
+        "Team View tab: redesigned card layout \u2014 colored header, 3-stat summary row (Avg Score, Avg Age, Priority count), 5 horizontal ranking bars with progress bar + value + rank label",
+        "Export overlay and recap team cards updated to match new horizontal bar layout",
+        "Recap: station averages and callouts fully dynamic; narrative uses configured station names; hardcoded softball references removed",
+        "PlayerCard eval bars: uses configured station names and priority index instead of hardcoded Fielding/Hitting/Pitching labels",
+        "Commissioner Panel text readability fix: main content area now has explicit white background",
+        "Schedule section: date column changed from free-text to type=date date picker",
+        "Pre-assigned round assignment: commissioner player table adds optional Round selector per pre-assigned player; cfgPreAssigned passes round through; player card shows blue lock message when commissioner has set a round; CSV import accepts optional Round column",
+        "Bug fix: PlayerModal was looking up players in RAW_PLAYERS only \u2014 now searches activePlayers",
+        "Bug fix: team view, export overlay, and recap were still iterating hardcoded TEAMS constant \u2014 all replaced with cfgTeams",
+        "Bug fix: multiple stray p-is-not-defined errors in teamStats and recap stationAvgs closures",
+        "Bug fix: pitchRank/hitRank/fieldRank undefined in recap after station generalization"
+      ]
+    },
+    {
+      "version": "V1.9.1",
+      "date": "Mar 23, 2026",
+      "changes": [
+        "Commissioner Panel \u2014 League Setup expanded: Season Name, Sport Emoji, Board Tagline, Board Title (auto-composed, overridable), Header Color with auto-gradient; live header preview as you edit",
+        "Commissioner Panel \u2014 Teams expanded: snake vs. straight draft toggle, Round 1 pick order via \u2191 \u2193 buttons; teams cap raised to 12",
+        "Commissioner Panel \u2014 new Schedule section: edit existing rows, add/remove custom rows",
+        "Board runtime fully config-aware: header gradient/title/tagline/emoji, schedule, team tiles, team selector, pick log, team view, scouting, pick order, notes, recap, XLSX export all read from live cfgTeams/cfgLeague/cfgSchedule",
+        "Player pool uses commissioner Players when saved; falls back to Springfield demo data",
+        "Pre-assigned players read from commissioner config; falls back to COACH_DAUGHTERS",
+        "NBA banner uses commissioner Priority Station \u2014 label, threshold, and rationale text all config-driven",
+        "Pick Order: round count, team list, snake/straight order driven by commissioner config",
+        "handleReset and handleAutoDraft use config-aware pre-assignments and team order",
+        "Recap narrative and callouts use config priority station label; legend text updated",
+        "PlayerCard and PlayerModal accept teams, stations, leagueLabel, priorityIdx props"
+      ]
+    },
+    {
+      "version": "V1.9.0",
+      "date": "Mar 23, 2026",
+      "changes": [
+        "Added Commissioner Mode \u2014 password-protected panel via new \u2699\ufe0f Commissioner button in board header",
+        "Password modal: portal-rendered, Enter to submit, Escape to cancel, session-persisted unlock",
+        "Commissioner Panel: full-screen overlay with sidebar nav \u2014 League Setup, Teams, Eval Stations, Players, Security",
+        "Players: inline editable table with add/remove rows; CSV import via file upload or paste",
+        "Security: change commissioner password from within the panel",
+        "All changes save to state.json via authenticated POST and broadcast via WebSocket",
+        "Server: added POST /api/commissioner/verify, /api/commissioner/settings, /api/commissioner/password endpoints",
+        "Server: loadState/saveState updated to persist commissionerPassword and commissionerConfig; FULL_STATE broadcasts include commissionerConfig"
+      ]
+    },
+    {
+      "version": "V1.8.7",
+      "date": "Mar 22, 2026",
+      "changes": [
+        "Added 'New to the board?' banner at top of Guide tab with a Launch Tour button",
+        "Banner styled in indigo to match the tour modal header \u2014 visually distinct from guide sections"
+      ]
+    },
+    {
+      "version": "V1.8.6",
+      "date": "Mar 22, 2026",
+      "changes": [
+        "Added :root CSS variable definitions to stylesheet \u2014 --color-background-primary, --color-background-secondary, --color-border-tertiary, --color-border-secondary, --color-text-primary, --color-text-secondary and more",
+        "Variables were previously undefined on the NAS (only resolved in claude.ai host environment), causing modal card backgrounds to be transparent",
+        "Added @media (prefers-color-scheme: dark) overrides for all variables \u2014 dark mode foundation is now in place",
+        "All existing var() references in TutorialModal and throughout the board now resolve correctly"
+      ]
+    },
+    {
+      "version": "V1.8.5",
+      "date": "Mar 22, 2026",
+      "changes": [
+        "Fixed tutorial overlay backdrop \u2014 root cause identified: rgba transparency on position:fixed elements fails when rendered inside #root but works when appended directly to document.body",
+        "Switched TutorialModal to use ReactDOM.createPortal(content, document.body) \u2014 renders outside React root, matching the browser behavior that works"
+      ]
+    },
+    {
+      "version": "V1.8.4",
+      "date": "Mar 22, 2026",
+      "changes": [
+        "Fixed tutorial overlay backdrop \u2014 root cause was browser rgba compositing failure with inline styles",
+        "Moved overlay background to .tut-overlay CSS class in the stylesheet \u2014 rgba(0,0,0,0.72) in a stylesheet renders correctly where inline style does not",
+        "Added dark mode override: rgba(0,0,0,0.82) under prefers-color-scheme: dark",
+        "Cleaned up overlay div \u2014 removed all stale fix attempts (minHeight, minWidth, width/height 100%, boxSizing, translateZ) leaving only the necessary positioning styles"
+      ]
+    },
+    {
+      "version": "V1.8.3",
+      "date": "Mar 22, 2026",
+      "changes": [
+        "Fixed tutorial modal backdrop not showing \u2014 root cause was paint order: overlay was sibling #4 of 6 so later siblings painted over it regardless of position:fixed",
+        "Moved TutorialModal render to last child position in DraftBoard \u2014 after footer, after all other siblings \u2014 so nothing paints over it"
+      ]
+    },
+    {
+      "version": "V1.8.2",
+      "date": "Mar 22, 2026",
+      "changes": [
+        "Fixed tutorial modal overlay \u2014 added explicit width/height/minHeight/minWidth to guarantee full-page coverage in all browsers",
+        "Tour button updated from '? Tour' to '\ud83d\udc4b Tour'"
+      ]
+    },
+    {
+      "version": "V1.8.1",
+      "date": "Mar 22, 2026",
+      "changes": [
+        "Moved Tour button from footer to board header, next to Export button \u2014 styled to match",
+        "Removed Tour link from footer",
+        "Fixed tutorial modal overlay \u2014 replaced inset shorthand with explicit top/left/right/bottom for broader browser compatibility"
+      ]
+    },
+    {
+      "version": "V1.8.0",
+      "date": "Mar 22, 2026",
+      "changes": [
+        "Added Onboarding Tutorial \u2014 15-step guided walkthrough covering every board feature",
+        "Each step includes a looping animation demonstrating the feature in action",
+        "Steps: Welcome, Eval System, Tiers/PR, Set My Team, Next Best Available, Drafting a Player, Undo/Reset/Lock, Scouting Tab, Team View, Pick Order, Notes/Scouting Notes, Position Tags, Email Generator, Recap/Export, Ready to Draft",
+        "Animated demos: eval bars filling in, tier list, team button cycling, NBA mode switching, card expand/round/team sequence, undo animation, YoY scouting cards, team view bars, pick order rows, live typing in notes and email fields, position tag toggling, draft recap reveal",
+        "Progress bar in header shows completion percentage",
+        "Keyboard navigation: left/right arrow keys to move between steps, Escape to close",
+        "Skip Tour button available on every step",
+        "Final step has Start Drafting! CTA that closes the modal",
+        "Accessible via '? Tour' link in the board footer"
+      ]
+    },
+    {
+      "version": "V1.7.10",
+      "date": "Mar 22, 2026",
+      "changes": [
+        "Rearchitected inline editing in the email preview \u2014 same ref pattern used by the Notes tab",
+        "Replaced dangerouslySetInnerHTML on contentEditable divs with imperative innerHTML via sectionRefs \u2014 eliminates React re-render conflicts",
+        "Reset button now uses onMouseDown instead of onClick to fire before blur \u2014 prevents focus/blur race condition",
+        "onInput (not onBlur) now sets editedSections state \u2014 Reset button appears immediately as you type",
+        "useEffect runs after every render to refresh non-edited sections from form field changes without disturbing user edits",
+        "Reset imperatively restores section innerHTML from buildSectionHtml and clears the edited flag"
+      ]
+    },
+    {
+      "version": "V1.7.9",
+      "date": "Mar 22, 2026",
+      "changes": [
+        "Fixed: Reset button still not appearing after inline edit \u2014 root cause was ref mutation not triggering React re-render",
+        "Added editVersion state counter \u2014 incremented on blur and on reset \u2014 forces React to re-evaluate hasEdit and show/hide the Reset button correctly"
+      ]
+    },
+    {
+      "version": "V1.7.8",
+      "date": "Mar 22, 2026",
+      "changes": [
+        "Fixed: Reset button was hidden behind hover/opacity logic that didn't work reliably in contentEditable sections",
+        "Reset button now appears persistently above any section that has been inline-edited \u2014 labeled 'Reset [Section Name]' in team color",
+        "Blue focus outline still appears when a section is actively being edited",
+        "Updated guide and preview hint text to remove references to hover behavior"
+      ]
+    },
+    {
+      "version": "V1.7.7",
+      "date": "Mar 22, 2026",
+      "changes": [
+        "Updated Welcome Email Generator guide section to document section toggles and inline editing added in V1.7.6"
+      ]
+    },
+    {
+      "version": "V1.7.6",
+      "date": "Mar 22, 2026",
+      "changes": [
+        "Added section toggles \u2014 9 toggle switches in the form panel (Opening, Division Overview, Schedule, Weather, Uniforms, Parents, GameChanger, Roster, Sign-off)",
+        "Toggled-off sections are fully absent from the preview and copied output",
+        "Toggle switches styled in team color, all on by default",
+        "Added inline editing \u2014 each section in the preview is directly contentEditable",
+        "Inline edits are an override layer on top of generated content \u2014 form field changes do not overwrite inline edits",
+        "Hover any section to reveal a subtle dashed outline and a Reset button",
+        "Reset button clears the inline override for that section and reverts to the generated version",
+        "Copy Text and Copy HTML capture the live preview including all inline edits"
+      ]
+    },
+    {
+      "version": "V1.7.5",
+      "date": "Mar 22, 2026",
+      "changes": [
+        "Removed Quick Reference card from the Guide tab \u2014 content duplicated the legend already visible on the Draft Board",
+        "Enriched legend with previously missing indicators: PR badge, notepad icon (scouting notes), green border (YoY improvement), yellow background (pending eval), gold banner (NBA)",
+        "Legend reordered for better flow \u2014 visual indicators first, then modes and views",
+        "Removed redundant 'Coach daughters auto-assigned' entry from legend \u2014 covered by blue badge entry"
+      ]
+    },
+    {
+      "version": "V1.7.4",
+      "date": "Mar 22, 2026",
+      "changes": [
+        "Guide tab redesigned \u2014 17 sections reorganized into four labeled categories: Understanding the Board, During the Draft, Tabs and Views, Team Tools",
+        "Added Quick Reference card at the top \u2014 key badges, borders, and icons at a glance",
+        "Visual category dividers added between each group",
+        "All sections now have consistent color coding by category: blue (understanding), amber (draft), green (tabs/views), purple (team tools)",
+        "How to Use the Board split into two focused sections: Drafting a Player and Toolbar Controls",
+        "Server Logs removed from the guide \u2014 it is an admin/developer tool and remains in What's New",
+        "Section text tightened throughout \u2014 removed redundancy and improved scannability"
+      ]
+    },
+    {
+      "version": "V1.7.3",
+      "date": "Mar 22, 2026",
+      "changes": [
+        "Added LEAGUE_INFO constant \u2014 name, abbr, division, year \u2014 centralizes league identity for email generator and future features like Commissioner Mode",
+        "Email generator opening paragraph, division header, and team badge now pull from LEAGUE_INFO instead of hardcoded strings",
+        "Added Subject Line field to Email tab form \u2014 pre-populated as 'Welcome to [year] [league name] [division] Division!'",
+        "Subject line displayed above the email body in the preview panel on both desktop and mobile",
+        "Subject line is fully editable in the form fields",
+        "Removed league-specific references from the Welcome Email Generator guide section \u2014 now generic for any league",
+        "Removed league-specific references from changelog entry descriptions"
+      ]
+    },
+    {
+      "version": "V1.7.2",
+      "date": "Mar 22, 2026",
+      "changes": [
+        "Fixed: Copy Text now writes both HTML and plain text to the clipboard using ClipboardItem",
+        "Pasting into Gmail, Outlook, or Apple Mail preserves bold headers, highlights, team badge, bullet lists, and signoff formatting",
+        "Graceful fallback to plain text on browsers that do not support ClipboardItem"
+      ]
+    },
+    {
+      "version": "V1.7.1",
+      "date": "Mar 22, 2026",
+      "changes": [
+        "Fixed: Email tab remount bug \u2014 EmailTab extracted into a proper named component, inputs no longer lose focus after one keystroke",
+        "First Practice Date, Season End Date, and Opening Day now use date pickers \u2014 formatted as 'Day, Month D' in the preview",
+        "First Practice Time and Weeknight Practice Time now use time pickers \u2014 formatted as '4:30 PM' in the preview",
+        "Phone numbers auto-formatted to XXX-XXX-XXXX in the email signoff regardless of how they are entered",
+        "Date fields pre-populated from DRAFT_INFO where available (First Practice = 3/22, Opening Day = 4/12)"
+      ]
+    },
+    {
+      "version": "V1.7.0",
+      "date": "Mar 22, 2026",
+      "changes": [
+        "Added Welcome Email Generator \u2014 new Email tab, only visible when My Team is selected",
+        "Generates a full PGS-style season welcome email based on the real template",
+        "Auto-fills: team name (in team color badge), coach names, full player roster (alphabetical by last name), first practice date, Opening Day date",
+        "Manual fields: first practice location, weeknight days/time, game days/time, season end date, blackout dates, GameChanger link, coach nickname/mobile/email",
+        "Orange placeholder text marks any unfilled fields in the preview",
+        "Yellow highlights on first practice announcement and please-respond block matching real PGS email styling",
+        "Desktop: two-column layout \u2014 form fields left, live preview right, both scroll independently",
+        "Mobile: tabbed layout \u2014 Fields tab and Preview tab with Preview Email button for flow",
+        "Copy Text button copies plain text for Gmail/Outlook; Copy HTML copies formatted HTML",
+        "Welcome Email button added to Draft Complete banner (visible when My Team selected)",
+        "Welcome Email button added to Draft Recap overlay \u2014 closes recap and opens Email tab",
+        "Session-only \u2014 fields not saved to server, no WebSocket changes needed",
+        "Added Welcome Email Generator section to Guide tab"
+      ]
+    },
+    {
+      "version": "V1.6.1",
+      "date": "Mar 21, 2026",
+      "changes": [
+        "Added \ud83d\udcdd indicator to the Scouting tab \u2014 appears next to a player's name when your team has scouting notes for them",
+        "Indicator placement mirrors the Draft Board tab behavior \u2014 tooltip reads 'You have scouting notes for this player'"
+      ]
+    },
+    {
+      "version": "V1.6.0",
+      "date": "Mar 21, 2026",
+      "changes": [
+        "Added Per-Player Scouting Notes \u2014 each team can add private notes to any player via the player detail modal",
+        "Notes section appears at the bottom of the modal when My Team is selected \u2014 hidden otherwise",
+        "Plain textarea with auto-save on keystroke (800ms debounce) and Saving\u2026 / \u2713 Saved / idle status indicator",
+        "Notes are private per-team \u2014 other teams cannot see your notes, you cannot see theirs",
+        "Multiple teams can each have independent notes on the same undrafted player \u2014 stored as teamId \u2192 playerId \u2192 note",
+        "\ud83d\udcdd icon appears on player cards on the Draft Board tab when your team has a note for that player",
+        "Notes persist to server via new UPDATE_PLAYER_NOTE WebSocket message type",
+        "server.js loadState, saveState, and all FULL_STATE messages updated to include playerNotes",
+        "Reset Draft does not clear per-player scouting notes",
+        "Added Per-Player Scouting Notes section to Guide tab"
+      ]
+    },
+    {
+      "version": "V1.5.6",
+      "date": "Mar 20, 2026",
+      "changes": [
+        "Fixed: tabs were hidden on mobile \u2014 tabs now occupy their own full-width row",
+        "Tab bar is horizontally scrollable \u2014 thin scrollbar visible on desktop, hidden on touch devices",
+        "Fade gradient on right edge hints at additional tabs on all screen sizes",
+        "Action buttons restored to separate row below tabs with flex-wrap for mobile",
+        "CSS media query: scrollbar hidden on hover:none devices (touch), visible on hover:hover (pointer)"
+      ]
+    },
+    {
+      "version": "V1.5.5",
+      "date": "Mar 20, 2026",
+      "changes": [
+        "Tab bar is now horizontally scrollable on mobile \u2014 no more wrapping",
+        "Added fade gradient on right edge to hint at additional tabs",
+        "Added flexShrink: 0 and whiteSpace: nowrap to tab buttons",
+        "44px min touch target maintained for mobile tap accuracy",
+        "Updated Guide \u2014 How to Use the Board notes mobile tab bar scrolling"
+      ]
+    },
+    {
+      "version": "V1.5.4",
+      "date": "Mar 20, 2026",
+      "changes": [
+        "Fixed: notes from previous team were showing when switching My Team selection",
+        "Root cause: stale closure \u2014 updateEditorFromStore was reading myTeam before React state updated",
+        "Fix: updateEditorFromStore now accepts explicit team parameter \u2014 My Team buttons pass t directly",
+        "Fix verified in isolated prototype before deployment"
+      ]
+    },
+    {
+      "version": "V1.5.3",
+      "date": "Mar 20, 2026",
+      "changes": [
+        "Rearchitected notes editor \u2014 replaced React state with plain JS ref (notesStore)",
+        "Removed useEffect dependency array approach entirely \u2014 replaced with imperative updateEditorFromStore()",
+        "useDraftSync now accepts onNotesReceived callback instead of setNotes \u2014 no more stale closures",
+        "Editor DOM updated directly on tab switch, team switch, and remote sync",
+        "Focus guard preserved \u2014 cursor position not disrupted while typing",
+        "Updated footer text: notes sync automatically, only visible to coaches with team selected",
+        "Prototyped and verified architecture in isolated test before deployment"
+      ]
+    },
+    {
+      "version": "V1.5.2",
+      "date": "Mar 20, 2026",
+      "changes": [
+        "Fixed: notes editor only updated on team switch \u2014 now also updates when notes change from remote sync",
+        "Added focus guard to useEffect \u2014 editor DOM only updates when not actively focused, preserving cursor while typing",
+        "Added notes[myTeam] to useEffect dependency array \u2014 editor refreshes on tab return and remote sync"
+      ]
+    },
+    {
+      "version": "V1.5.1",
+      "date": "Mar 20, 2026",
+      "changes": [
+        "Fixed: notes editor typed text backwards due to React re-rendering contentEditable on every keystroke",
+        "Replaced dangerouslySetInnerHTML with useRef + useEffect to set initial content only on team switch",
+        "Browser now owns the editor DOM after mount \u2014 cursor position preserved correctly while typing"
+      ]
+    },
+    {
+      "version": "V1.5.0",
+      "date": "Mar 20, 2026",
+      "changes": [
+        "Added Notes tab \u2014 private per-team notepad, hidden until My Team is selected",
+        "Rich text toolbar: Bold, Italic, Underline, bullet list, numbered list via execCommand",
+        "Notes sync in real time via WebSocket with 1-second debounce",
+        "Notes persist to server alongside draft state in data/demo.json",
+        "Reset Draft does not clear notes \u2014 notes are independent of draft state",
+        "Dynamic team support \u2014 notes keyed by team identifier, works with any number of teams",
+        "Added new UPDATE_NOTES WebSocket message type to server.js",
+        "server.js loadState, saveState, FULL_STATE all updated to include notes",
+        "Added Notes Tab section to Guide",
+        "Added per-player notes to roadmap as planned feature"
+      ]
+    },
+    {
+      "version": "V1.4.2",
+      "date": "Mar 20, 2026",
+      "changes": [
+        "Fixed: Reset Draft now preserves position tags assigned to all players",
+        "Position tags reflect scouting knowledge independent of draft state and are not cleared on reset",
+        "Updated Guide \u2014 Lock Board section notes that positions are preserved on reset"
+      ]
+    },
+    {
+      "version": "V1.4.1",
+      "date": "Mar 20, 2026",
+      "changes": [
+        "Fixed: position pills missing from Scouting tab \u2014 added to player card headers",
+        "Fixed: const RAW_PLAYERS declaration was dropped during V1.4.0 assembly \u2014 board failed to load",
+        "Fixed: handleAssignRound function was dropped during V1.4.0 assembly \u2014 board failed to load",
+        "Expanded HTML assembly checklist to 9 points to catch these cases going forward"
+      ]
+    },
+    {
+      "version": "V1.4.0",
+      "date": "Mar 20, 2026",
+      "changes": [
+        "Added Position Tags \u2014 user-assigned, optional, multi-position support",
+        "Position selector in expanded player card \u2014 tap to toggle, works before or after drafting",
+        "Available positions: P, C, 1B, 2B, 3B, SS, LF, CF, RF, OF",
+        "Position pills displayed on collapsed card, player modal, Team View, Pick Order, and Draft Recap",
+        "Positions stored in drafted state and sync via WebSocket in real time",
+        "Positions persist across page refreshes and server restarts",
+        "Added Position Tags section to Guide tab",
+        "Updated roadmap \u2014 Position Tags marked complete"
+      ]
+    },
+    {
+      "version": "V1.3.1",
+      "date": "Mar 20, 2026",
+      "changes": [
+        "Added Server Logs link to board footer \u2014 opens /logs in a new tab",
+        "Link styled to match existing footer text"
+      ]
+    },
+    {
+      "version": "V1.3.0",
+      "date": "Mar 20, 2026",
+      "changes": [
+        "Added in-memory server log buffer \u2014 500 entries, circular, resets on restart",
+        "Added /api/logs JSON endpoint returning log entries with uptime and buffer stats",
+        "Added /logs browser-based log viewer with auto-refresh, pause, level filter, and keyword search",
+        "Added Copy Log and Download Log buttons for easy sharing",
+        "Log viewer shows uptime, total entries, and INFO/WARN/ERROR counts",
+        "server.js now logs all key events: startup, connect, subscribe, update, save, disconnect, errors",
+        "Added WARN logging for malformed WebSocket messages and missing boardIds",
+        "Added ERROR logging for WebSocket errors and state file failures",
+        "Added Server Logs section to the Guide tab",
+        "Future enhancements: persistent log file, log viewer auth, log level configuration"
+      ]
+    },
+    {
+      "version": "V1.2.2",
+      "date": "Mar 20, 2026",
+      "changes": [
+        "Updated Known Issues renderer to display structured issue objects with severity badge, summary, and detail",
+        "Added 5 known issues to changelog.json"
+      ]
+    },
+    {
+      "version": "V1.2.1",
+      "date": "Mar 20, 2026",
+      "changes": [
+        "Fixed: roadmap 'complete' status was rendering as 'Future' \u2014 added missing status color entry",
+        "Fixed: HTML assembly dropped ReactDOM.createRoot mount call due to off-by-one in build script \u2014 board now loads correctly",
+        "Added ReactDOM.createRoot verification to HTML assembly checklist to prevent recurrence"
+      ]
+    },
+    {
+      "version": "V1.2.0",
+      "date": "Mar 20, 2026",
+      "changes": [
+        "Added clickable player names \u2014 underlined in purple across all tabs",
+        "Clicking a name opens a sports card modal with full player detail",
+        "Modal header uses tier gradient (undrafted) or team color (drafted)",
+        "Modal shows overall score, age, YoY delta, all 5 eval scores with bars and deltas vs 2025",
+        "2025 game stats (batting + pitching) shown for players coached by Homer Simpson",
+        "Modal available in Draft Board, Scouting, Pick Order, Team View, and Draft Recap",
+        "Clicking a name stops propagation \u2014 card expand behavior unchanged",
+        "Tap backdrop or \u2715 button to close modal",
+        "Updated Guide \u2014 How to Use the Board section mentions clickable player names"
+      ]
+    },
+    {
+      "version": "V1.1.0",
+      "date": "Mar 19, 2026",
+      "changes": [
+        "Added \ud83d\udccb What's New tab with Change Log, Roadmap, and Known Issues sections",
+        "Changelog loaded dynamically from changelog.json on the server",
+        "Fixed cross-board state bleeding \u2014 server now strictly routes updates by boardId with no implicit fallback",
+        "Added boardId field to all FULL_STATE WebSocket messages",
+        "Added client-side boardId guard \u2014 boards silently discard messages intended for other boards",
+        "Task Scheduler restart command updated to use kill -9 for reliable process replacement"
+      ]
+    },
+    {
+      "version": "V1.0.0",
+      "date": "Mar 19, 2026",
+      "changes": [
+        "Initial demo release \u2014 Springfield Youth Softball (SYS) Spring 2026 theme",
+        "Full Simpsons/Springfield cast \u2014 44 players, 4 teams (Isotopes, Squishees, Kwik-E-Karts, Nuclear Rods)",
+        "13 pre-assigned players mapped to Springfield coaches",
+        "noPitch flag removed \u2014 demo is sport/league agnostic",
+        "Coach Daughter renamed to Pre-Assigned with \u2b50 badge throughout",
+        "Separate version track starting at V1.0.0",
+        "Board ID set to demo \u2014 isolated state file from production boards",
+        "Board starts in pre-draft state (no picks made)"
+      ]
+    }
+  ],
+  "roadmap": [
+    {
+      "feature": "Archive Board \u2014 one-way lock, permanent read-only season record",
+      "status": "complete",
+      "detail": "One-way permanent lock via Commissioner Mode; board becomes read-only for all users; accessible at its URL as a season record; requires archive unlock code to reverse"
+    },
+    {
+      "feature": "Dark Mode \u2014 light, dark, and system theme toggle",
+      "status": "complete",
+      "detail": "Three-way toggle: Light, Dark, and System (follows OS setting); preference saved across sessions; all colors use CSS variables for full theme support"
+    },
+    {
+      "feature": "Analytics Tab \u2014 team radar, draft timeline, player scatter, and tier distribution charts",
+      "status": "complete",
+      "detail": "Four interactive Chart.js charts: team radar, draft score timeline, station averages bar chart, and tier distribution; dark-mode aware and color-matched to team colors"
+    },
+    {
+      "feature": "Previously Coached Flag \u2014 per-coach badge and NBA tiebreaker for players coached last season",
+      "status": "complete",
+      "detail": "Coaches mark players they coached last season via a toggle on the card or modal; shows purple \ud83c\udfc5 badge; private per-team data; used as tiebreaker in Next Best Available"
+    },
+    {
+      "feature": "Trade / Swap Feature \u2014 reassign drafted players between teams",
+      "status": "future",
+      "detail": "Allow commissioners or coaches to reassign drafted players between teams after the draft; useful for trades and post-draft adjustments"
+    },
+    {
+      "feature": "Draft Board Web App \u2014 full SaaS with auth, database, multi-sport/multi-league support",
+      "status": "future",
+      "detail": "Cloud-hosted version with user authentication, persistent database, and support for multiple sports, leagues, and seasons without NAS setup"
+    },
+    {
+      "feature": "Commissioner Mode \u2014 password-protected board config: teams, players, stations, settings",
+      "status": "complete",
+      "detail": "Password-protected panel for league setup (teams, coaches, colors), eval station config, player import, pre-assigned players, schedule, positions, and board settings"
+    },
+    {
+      "feature": "Onboarding Tutorial \u2014 guided tour with highlights and tooltips for new users",
+      "status": "complete",
+      "detail": "Step-by-step guided tour with animated highlights, arrows, and tooltips; covers all major features; accessible from the toolbar at any time"
+    },
+    {
+      "feature": "Welcome Email Generator \u2014 auto-fills roster, team, and season info",
+      "status": "complete",
+      "detail": "Generates a formatted HTML season welcome email; auto-fills team name, coaches, roster, league name, division, and year; 9 toggleable sections with inline editing"
+    },
+    {
+      "feature": "Per-Player Notes \u2014 private per-team scouting notes on each player card",
+      "status": "complete",
+      "detail": "Private per-player scouting notes for each team; notes sync in real time and persist across restarts; shown as \ud83d\udcdd icon on player cards"
+    },
+    {
+      "feature": "Clickable Player Names \u2014 player detail modal with full eval stats",
+      "status": "complete",
+      "detail": "Click any player name to open a full-screen card modal with tier, scores, YoY comparison, priority badge, PR, notes, and coaching history"
+    },
+    {
+      "feature": "Shared Notes Tab \u2014 private per-team rich-text notepad with real-time sync",
+      "status": "complete",
+      "detail": "Private per-team notepad with bold, italic, bullet, and numbered list formatting; syncs in real time across all devices on the same team"
+    },
+    {
+      "feature": "Position Tags \u2014 user-assigned position badges on player cards",
+      "status": "complete",
+      "detail": "Assign one or more position badges (P, C, 1B, etc.) to players; visible on cards, modal, team view, pick order, and draft recap; commissioner-configurable"
+    },
+    {
+      "feature": "Server Logging \u2014 in-memory log viewer at /logs with auto-refresh",
+      "status": "complete",
+      "detail": "Server-side event log with timestamp, level, and message; accessible at /logs with auto-refresh; useful for diagnosing sync and save issues"
+    },
+    {
+      "feature": "New Season / Factory Reset \u2014 wipes all board data and resets commissioner password",
+      "status": "complete",
+      "detail": "Wipes all draft picks, notes, commissioner config, and player data; resets commissioner password to default; requires typed confirmation; cannot be undone"
+    },
+    {
+      "status": "complete",
+      "feature": "What's New Tab \u2014 collapsible changelog grouped by minor version",
+      "detail": "Changelog entries grouped and collapsed by minor version; most recent version expanded by default; includes versioning legend and roadmap"
+    },
+    {
+      "feature": "GitHub Publishing + Documentation \u2014 README, SETUP, and season management guide",
+      "status": "planned",
+      "detail": "Publish source to GitHub with README.md (project overview), SETUP.md (NAS deployment and new board creation), and a season management guide"
+    },
+    {
+      "feature": "CSV Template Download \u2014 generates a pre-formatted import CSV with configured station names",
+      "status": "complete",
+      "detail": "\u2b07 Download Template button in Commissioner Mode Players section; generates a CSV pre-formatted with configured station names as column headers and one example row"
+    },
+    {
+      "feature": "My Team First-Run Nudge \u2014 banner prompts coaches to set their team on first load",
+      "status": "complete",
+      "detail": "Yellow dismissible banner shown on first load when no team has been explicitly selected; disappears when a team button is clicked or dismissed manually"
+    },
+    {
+      "feature": "Password Recovery \u2014 Forgot Password flow resets commissioner password to default",
+      "status": "complete",
+      "detail": "Forgot Password link on Commissioner login modal; requires typing RESET PASSWORD to confirm; resets password to default (commissioner) via server endpoint"
+    },
+    {
+      "feature": "Player Column Sorting \u2014 sortable columns in Commissioner Mode player table",
+      "status": "complete",
+      "detail": "Click any column header in Commissioner Mode player table to sort; all 10 columns supported; active column highlighted with \u25b2/\u25bc; uses stable player id to prevent mutation bugs"
+    },
+    {
+      "feature": "Pre-Assigned Player Visual Treatment \u2014 blue tint card and locked label on draft board",
+      "status": "complete",
+      "detail": "Pre-assigned players show a blue tint card, \u2b50 badge, and locked label instead of draft buttons; COACH_DAUGHTERS constant removed; commissioner config is sole source of truth"
+    },
+    {
+      "feature": "Division Field \u2014 Commissioner Mode league setup field shown in board header",
+      "status": "complete",
+      "detail": "Division field in Commissioner Mode League Setup (e.g. 11-13, Varsity, U12); shown in the board header subtitle between league name and player count"
+    },
+    {
+      "feature": "Prior Season Score Auto-Detection \u2014 players with no current scores use prior season data",
+      "status": "complete",
+      "detail": "Players with blank current scores but valid prior season scores (PS1-PS5) automatically use prior data for tier, overall, and PR; amber \ud83d\udccb note shown on card"
+    },
+    {
+      "feature": "Pending Eval Checkbox \u2014 flags players with no evals; yellow treatment, no tier or PR",
+      "status": "complete",
+      "detail": "Checkbox in Commissioner Mode player table; pending players get yellow card treatment, no tier badge, no PR, and are excluded from team averages and NBA"
+    },
+    {
+      "feature": "Per-Team Roster Export \u2014 team filter in Export overlay with single-team .xlsx download",
+      "status": "complete",
+      "detail": "Team filter dropdown in Export overlay; selecting a team shows only that team's card and downloads a per-team .xlsx with name, age, scores, tier, positions, and round"
+    }
+  ],
+  "knownIssues": [
+    {
+      "id": 1,
+      "severity": "low",
+      "summary": "HTML assembly is manual and error-prone",
+      "detail": "Rebuilding index_demo.html from the JSX requires 4 manual steps: remove duplicate BOARD_ID, remove export default, add useDraftSync call, and verify ReactDOM.createRoot is present. A build script is not planned since the HTML is always assembled during development sessions, not independently. Mitigation: a 5-point verification checklist is run after every assembly \u2014 (1) BOARD_ID appears once, (2) no export default, (3) useDraftSync call present, (4) ReactDOM.createRoot present, (5) closing tags correct."
+    },
+    {
+      "id": 2,
+      "severity": "low",
+      "summary": "Player modal does not update in real time while open",
+      "detail": "If the modal is open and another coach drafts that player via WebSocket sync, the modal header and draft status will not reflect the change until it is closed and reopened. The board itself updates correctly."
+    },
+    {
+      "id": 3,
+      "severity": "low",
+      "summary": "Player name tap target may be too small on mobile",
+      "detail": "The underlined name text on compact player cards \u2014 especially for players with short names in lower tiers \u2014 may be difficult to tap precisely on small screens. Consider increasing the tap target area in a future update."
+    },
+    {
+      "id": 4,
+      "severity": "low",
+      "summary": "Player modal behavior inside Draft Recap overlay unverified",
+      "detail": "The Draft Recap overlay uses zIndex 1000 and the player modal uses zIndex 2000, which should allow the modal to render correctly on top of the recap. This has not been verified on the live board and may need testing."
+    },
+    {
+      "id": 5,
+      "severity": "low",
+      "summary": "Player modal for pending-eval players renders mostly empty",
+      "detail": "Players with no 2026 eval scores show only a pending notice in the modal body with no eval bars, YoY comparison, or stats. This is expected behavior but may be confusing. Consider a more informative placeholder in a future update."
+    },
+    {
+      "id": 6,
+      "severity": "low",
+      "summary": "Server logs reset on restart",
+      "detail": "The log buffer is in-memory only and clears every time the server restarts. If an issue occurs and the server restarts before logs are copied or downloaded, the evidence is lost. Future enhancement: persist logs to a rolling file on disk."
+    },
+    {
+      "id": 9,
+      "severity": "low",
+      "summary": "Position labels cannot be edited inline in Commissioner Mode",
+      "detail": "The Positions section in Commissioner Mode does not support inline editing of existing position labels. To rename a position, delete it and re-add it with the correct name. Inline editing is deferred due to contentEditable complexity."
+    },
+    {
+      "id": 10,
+      "severity": "low",
+      "summary": "Schedule row overflows viewport on mobile when label and dates are side by side",
+      "detail": "On narrow screens the schedule container renders the \u2018\ud83d\udcc5 Schedule\u2019 label and dates row inline, leaving insufficient width for the dates to scroll properly. The fix requires a responsive layout \u2014 stacking the label above the dates row on mobile while preserving the side-by-side layout on desktop. Deferred to a future update."
+    }
+  ],
+  "versioning": {
+    "scheme": "V{major}.{minor}.{patch}",
+    "rules": [
+      {
+        "level": "patch",
+        "example": "V1.11.z",
+        "trigger": "Bug fixes, copy changes, minor UI tweaks, roadmap and changelog metadata updates"
+      },
+      {
+        "level": "minor",
+        "example": "V1.y.0",
+        "trigger": "New feature area, new tab, or new major panel"
+      },
+      {
+        "level": "major",
+        "example": "Vx.0.0",
+        "trigger": "Platform-level change \u2014 SaaS, authentication, database backend"
+      }
+    ],
+    "thresholds": {
+      "next_minor": "V1.12.0 \u2014 triggered by Analytics Tab, New Season / Factory Reset, or equivalent new feature area",
+      "next_major": "V2.0.0 \u2014 triggered by Draft Board Web App (SaaS) rebuild"
+    }
+  }
+}
