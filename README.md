@@ -92,7 +92,7 @@ The entire frontend is a single self-contained HTML file compiled client-side by
 
 ```
 draftkit/
-├── server.js              # Express + WebSocket server
+├── server.js              # Express + WebSocket server (standalone deployment)
 ├── package.json           # Node dependencies
 ├── changelog.json         # Version history (read by the app at runtime)
 ├── .gitignore
@@ -109,6 +109,8 @@ State files are written to `data/` at runtime and excluded from the repository:
 data/
 └── {boardId}.json         # Per-board state (picks, notes, config, passwords)
 ```
+
+> **Note:** The standalone `server.js` in this repo is for independent local deployment. If you are running multiple apps on a shared host (e.g. a Synology NAS), a separate host server is used and DraftKit's `server.js` is not run directly. See [SETUP.md](SETUP.md) for details.
 
 ---
 

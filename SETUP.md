@@ -93,21 +93,27 @@ Port 3000 is never exposed directly. All external traffic goes through the rever
 
 ### Step 1 — Place files on the NAS
 
-Create the following folder structure on your NAS. The recommended path is:
+DraftKit runs as a tenant under a shared host server. The folder structure on the NAS is:
 
 ```
-/volume1/web/draftkit/
-├── server.js
+/volume1/web/
+├── server.js              # host server — serves all apps
 ├── package.json
-├── changelog.json
-└── public/
-    └── {boardId}/
-        └── index.html
+├── node_modules/
+├── draftkit/
+│   ├── changelog.json
+│   ├── data/              # per-board state files (auto-created)
+│   └── public/
+│       └── {boardId}/
+│           └── index.html
+└── simchakit/             # future apps follow the same pattern
 ```
+
+> **Note:** The host `server.js` is separate from DraftKit's standalone `server.js` in this repo. The host server mounts DraftKit at `/draft/` and any additional apps at their own paths. It is not published to GitHub as it is specific to this NAS setup.
 
 The easiest way to transfer files is via SMB from Mac Finder:
 - In Finder, press `⌘K` and connect to `smb://[your-nas-ip]`
-- Navigate to `/volume1/web/` and create the `draftkit` folder
+- Navigate to `/volume1/web/` and create the folder structure above
 - Copy all files into place
 
 ### Step 2 — Install dependencies
@@ -115,7 +121,7 @@ The easiest way to transfer files is via SMB from Mac Finder:
 Open DSM and launch a terminal session, or SSH into the NAS:
 
 ```bash
-cd /volume1/web/draftkit
+cd /volume1/web
 npm install
 ```
 
@@ -149,7 +155,7 @@ In DSM, go to **Control Panel → Task Scheduler** and create a new triggered ta
 | Task type | Triggered task — User-defined script |
 | User | root |
 | Event | Boot-up |
-| Script | `node /volume1/web/draftkit/server.js` |
+| Script | `node /volume1/web/server.js` |
 
 Save the task. The server will now start automatically whenever the NAS boots.
 
@@ -176,7 +182,7 @@ If you are using a Synology DDNS hostname (e.g. `*.familyds.net`), you can reque
 
 Navigate to `https://your-ddns-hostname/draft/your-board-id` in a browser. You should see the board load and the sync banner briefly show "Connected."
 
-Open the log viewer at `https://your-ddns-hostname/logs` to confirm the server is running and clients are connecting.
+Open the log viewer at `https://your-ddns-hostname/logs` to confirm the host server is running and clients are connecting.
 
 ---
 
@@ -184,12 +190,12 @@ Open the log viewer at `https://your-ddns-hostname/logs` to confirm the server i
 
 Each board is an independent instance with its own state, commissioner config, and password. To add a board:
 
-1. Create a new folder under `public/`: `mkdir -p public/new-board-id`
-2. Copy an existing board HTML into it: `cp public/demo/index.html public/new-board-id/index.html`
-3. Update the `BOARD_ID` constant at the top of the new `index.html` to match the folder name
-4. No server restart is required — the server picks up new boards dynamically
+1. Create a new folder under `draftkit/public/`: `mkdir -p /volume1/web/draftkit/public/new-board-id`
+2. Copy an existing board HTML into it from any existing board folder
+3. Update the `BOARD_ID` constant at the top of the new `index.html` to match the folder name, prefixed with `draft-` (e.g. `"draft-new-board-id"`)
+4. No server restart is required — the host server picks up new boards dynamically
 
-State for the new board is saved automatically to `data/new-board-id.json` on first use.
+State for the new board is saved automatically to `draftkit/data/draft-new-board-id.json` on first use.
 
 ---
 
@@ -212,7 +218,7 @@ In Commissioner Mode → Board Settings, click **Archive Board**. You will be pr
 
 Once archived, the board is fully locked. All coach controls are disabled. The board remains viewable at its original URL as a permanent season record.
 
-> **What archiving does not do:** it does not delete any files, free up the board ID, or affect any other boards. The state file (`data/{boardId}.json`) remains on disk unchanged.
+> **What archiving does not do:** it does not delete any files, free up the board ID, or affect any other boards. The state file (`draftkit/data/{boardId}.json`) remains on disk unchanged.
 
 **Step 3 — Note the archived board's URL**
 
@@ -230,7 +236,7 @@ Pick a board ID that identifies the season clearly, for example `pgs-2027`. The 
 
 **Step 2 — Create the folder and copy the HTML**
 
-On the NAS, via Finder over SMB:
+On the NAS, via Finder over SMB or File Station:
 
 1. Navigate to `/volume1/web/draftkit/public/`
 2. Create a new folder with your chosen board ID (e.g. `pgs-2027`)
@@ -238,10 +244,10 @@ On the NAS, via Finder over SMB:
 
 **Step 3 — Update the BOARD_ID constant**
 
-Open the new `index.html` in a text editor and find the `BOARD_ID` constant near the top of the file. Update it to match the new folder name exactly:
+Open the new `index.html` in a text editor and find the `BOARD_ID` constant near the top of the file. Update it to match the new folder name, prefixed with `draft-`:
 
 ```js
-const BOARD_ID = "pgs-2027";
+const BOARD_ID = "draft-pgs-2027";
 ```
 
 Save the file and copy it back to the NAS. This is the only code change required.
@@ -267,12 +273,12 @@ Open Commissioner Mode on the new board and configure everything from scratch:
 
 The board HTML (`index.html`) can be updated at any time without restarting the server:
 
-1. Replace the `index.html` file in the board's folder on the NAS (via Finder over SMB or any file transfer method)
+1. Replace the `index.html` file in the board's folder on the NAS (via Finder over SMB or File Station)
 2. Reload the page in any connected browser
 
-Live draft state is held in memory and persisted to `data/{boardId}.json` — it is unaffected by replacing the HTML file.
+Live draft state is held in memory and persisted to `draftkit/data/{boardId}.json` — it is unaffected by replacing the HTML file.
 
-`server.js` and `changelog.json` changes **do** require a server restart. In DSM Task Scheduler, select the auto-start task and click **Stop**, then **Run** to restart.
+The host `server.js` changes **do** require a server restart. In DSM Task Scheduler, select the Web Server task and click **Stop**, then **Run** to restart.
 
 ---
 
@@ -288,7 +294,7 @@ Port 443 is not forwarded correctly. Verify the forwarding rule on each router i
 Confirm the Task Scheduler task is set to run as `root` and the script path is correct. Check the task's output log in Task Scheduler for error details.
 
 **`node_modules` not found error on startup**
-Run `npm install` in the draftkit directory on the NAS. This is required after the initial file copy and after any `package.json` changes.
+Run `npm install` in `/volume1/web/` on the NAS. This is required after the initial file copy and after any `package.json` changes.
 
 ---
 
