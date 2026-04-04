@@ -1,9 +1,18 @@
 {
-  "current": "V1.17.5",
+  "current": "V1.17.6",
   "whatsNew": [
-    "Fix \u2014 footer now shows Board ID: {boardId} dynamically instead of hardcoded \u201cDemo Board\u201d"
+    "Refactor \u2014 BOARD_ID namespaced with draft- prefix for multi-app host server support (demo \u2192 draft-demo, pgs-2026 \u2192 draft-pgs-2026)",
+    "Refactor \u2014 changelog endpoint moved from /changelog to /draft/changelog"
   ],
   "changelog": [
+    {
+      "version": "V1.17.6",
+      "date": "Apr 4, 2026",
+      "changes": [
+        "Refactor \u2014 BOARD_ID namespaced with draft- prefix for multi-app host server support (demo \u2192 draft-demo, pgs-2026 \u2192 draft-pgs-2026)",
+        "Refactor \u2014 changelog endpoint moved from /changelog to /draft/changelog"
+      ]
+    },
     {
       "version": "V1.17.5",
       "date": "Mar 26, 2026",

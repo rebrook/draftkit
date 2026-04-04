@@ -208,7 +208,7 @@
 <script type="text/babel">
 const { useState, useMemo, useEffect, useRef, useCallback } = React;
 // ── WebSocket connection ──────────────────────────────────────────────────────
-const BOARD_ID = "demo";
+const BOARD_ID = "draft-demo";
 
 function useDraftSync(drafted, setDrafted, boardLocked, setBoardLocked, draftHistory, setDraftHistory, onNotesReceived, onPlayerNotesReceived, onCommissionerConfigReceived, onArchivedReceived) {
   const ws = useRef(null);
@@ -495,7 +495,7 @@ const GUIDE_SECTIONS = [
 
 
 
-const VERSION = "V1.17.5";
+const VERSION = "V1.17.6";
 
 // ── Theme context ─────────────────────────────────────────────────────────────
 var ThemeContext = React.createContext("system");
@@ -3419,7 +3419,7 @@ function DraftBoard({ darkMode, setDarkMode }) {
 
   // Fetch changelog from server on mount
   React.useEffect(function() {
-    fetch("/changelog")
+    fetch("/draft/changelog")
       .then(function(r) { return r.json(); })
       .then(function(data) { setChangelog(data); })
       .catch(function() { setChangelogError(true); });
